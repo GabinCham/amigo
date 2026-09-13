@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f4ead8;
+  --paper-2: #efe2cc;
+  --ink: #2a2118;
+  --muted: #6d5c4d;
+  --terracotta: #c45c26;
+  --terracotta-dark: #9a3f16;
+  --olive: #3d4f3a;
+  --pitch: #1f3d2a;
+  --gold: #e0a84a;
+  --foam: #fffaf1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-terracotta: var(--terracotta);
+  --color-olive: var(--olive);
+  --color-pitch: var(--pitch);
+  --color-gold: var(--gold);
+  --color-foam: var(--foam);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+.grain {
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(224, 168, 74, 0.18), transparent 50%),
+    radial-gradient(900px 500px at 110% 10%, rgba(196, 92, 38, 0.12), transparent 45%),
+    radial-gradient(700px 400px at 50% 120%, rgba(31, 61, 42, 0.12), transparent 50%);
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.confetti {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 14px;
+  background: var(--gold);
+  animation: confetti-fall 2.6s linear infinite;
+}
+
+.confetti-piece:nth-child(3n) {
+  background: var(--terracotta);
+}
+
+.confetti-piece:nth-child(3n + 1) {
+  background: var(--olive);
+}
+
+.confetti-piece:nth-child(4n) {
+  width: 6px;
+  height: 10px;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
 }
