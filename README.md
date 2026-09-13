@@ -2,7 +2,7 @@
 
 App web pour parler espagnol 30 jours avec Amigo : quotidien, souvenirs de voyage, foot.
 
-Site : https://gabin.github.io/amigo/
+Site : https://gabincham.github.io/amigo/
 
 ```bash
 npm install
